@@ -1,0 +1,46 @@
+<html>
+<head>
+  <link rel="stylesheet" href="bootstrap.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="link">
+  You're looking at a Ractive<br>
+  version of <a href="https://dbmonster.firebaseapp.com/">DBMonster</a>.<br>
+  <a class="center" href="https://github.com/rich-harris/dbmonster/blob/gh-pages/index.html">View Source Code</a>
+</div>
+
+<div id="body">
+</div>
+
+<script src="underscore-min.js"></script>
+<script src="ractive.js"></script>
+<script src="ractive-load.js"></script>
+<script src="junkola-copied-from-ember.js"></script>
+
+<script type="text/javascript">
+  var ROWS = 100;
+  var TIMEOUT = 0;
+
+  Ractive.load( 'table.html' ).then( function ( Table ) {
+    var table = new Table({
+      el: '#body',
+      data: {
+        dbs: getDatabases()
+      }
+    });
+
+    function redraw() {
+      table.set( 'dbs', getDatabases() );
+      setTimeout(redraw, TIMEOUT);
+    }
+    redraw();
+  })
+  .catch( function ( err ) {
+    console.error( err );
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<table class="table table-striped latest-data">
+  <tbody>
+
+  {{#each dbs}}
+    <tr>
+
+      <td class="dbname">
+        {{name}}
+      </td>
+
+      <td class="query-count">
+        <span class="{{ countClassName }}">
+          {{ queries.length }}
+        </span>
+      </td>
+
+      {{#each topFiveQueries}}
+        <td class="Query {{ className }}">
+          {{ elapsed }}
+          <div class="popover left">
+            <div class="popover-content">{{ query }}</div>
+            <div class="arrow"></div>
+          </div>
+        </td>
+      {{/each}}
+
+    </tr>
+  {{/each}}
+
+  </tbody>
+</table>
