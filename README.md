@@ -10,7 +10,7 @@ After the awesome demonstration of Ember's new rendering engine [Glimmer](https:
 
 I'm really excited for the Ember community - Glimmer has been long in the planning, and looks like a tremendous piece of work. Ember itself is a great framework.
 
-But Ractive users have been doing this sort of thing in production for well over a year :)
+But Ractive users have been doing this sort of thing in production for well over a year, and ours is clearly faster, at least in this demo :)
 
 ## Why is Ractive so fast?
 
