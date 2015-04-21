@@ -15,9 +15,22 @@
 </div>
 
 <script src="underscore-min.js"></script>
-<script src="ractive.js"></script>
+<script src="ractive-legacy.js"></script>
 <script src="ractive-load.js"></script>
 <script src="junkola-copied-from-ember.js"></script>
+
+<script src="https://cdn.rawgit.com/paulirish/memory-stats.js/master/memory-stats.js"></script>
+<script>
+var stats = new MemoryStats();
+stats.domElement.style.position = 'fixed';
+stats.domElement.style.right        = '0px';
+stats.domElement.style.bottom       = '0px';
+document.body.appendChild( stats.domElement );
+requestAnimationFrame(function rAFloop(){
+    stats.update();
+    requestAnimationFrame(rAFloop);
+});
+</script>
 
 <script type="text/javascript">
   var ROWS = 100;
@@ -28,7 +41,8 @@
       el: '#body',
       data: {
         dbs: getDatabases()
-      }
+      },
+      modifyArrays: false
     });
 
     function redraw() {
