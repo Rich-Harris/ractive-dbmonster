@@ -1,0 +1,16 @@
+{
+  "name": "ractive-dbmonster",
+  "version": "1.0.0",
+  "dependencies": {
+    "memory-stats": "^1.0.2",
+    "ractive": "^0.7.3",
+    "ractive-load": "^0.5.2",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {
+    "http-server": "^0.8.5"
+  },
+  "scripts": {
+    "start": "http-server"
+  }
+}
