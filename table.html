@@ -5,18 +5,18 @@
     <tr>
 
       <td class="dbname">
-        {{name}}
+        {{ dbname }}
       </td>
 
       <td class="query-count">
-        <span class="{{ countClassName }}">
-          {{ queries.length }}
+        <span class="{{ lastSample.countClassName }}">
+          {{ lastSample.nbQueries }}
         </span>
       </td>
 
-      {{#each topFiveQueries}}
-        <td class="Query {{ className }}">
-          {{ elapsed }}
+      {{#each lastSample.topFiveQueries}}
+        <td class="Query {{ elapsedClassName }}">
+          {{ formatElapsed }}
           <div class="popover left">
             <div class="popover-content">{{ query }}</div>
             <div class="arrow"></div>
