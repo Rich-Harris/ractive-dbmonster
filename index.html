@@ -14,36 +14,36 @@
 <div id="body">
 </div>
 
-<script src="node_modules/underscore/underscore-min.js"></script>
-<script src="node_modules/ractive/ractive-legacy.js"></script>
-<script src="node_modules/ractive-load/dist/ractive-load.js"></script>
-<script src="node_modules/memory-stats/memory-stats.js"></script>
-<script src="monitor.js"></script>
-<script src="junkola-copied-from-ember.js"></script>
+<script src="ENV.js"></script>
+<script src='http://cdn.ractivejs.org/latest/ractive.js'></script>
+<script src="http://cdn.jsdelivr.net/ractive.load/latest/ractive-load.min.js"></script>
+<script src="http://localvoid.github.io/perf-monitor/0.1/perf-monitor.js"></script>
 
 <script type="text/javascript">
-  var ROWS = 100;
-  var TIMEOUT = 0;
+	perfMonitor.startFPSMonitor();
+	perfMonitor.startMemMonitor();
+	perfMonitor.initProfiler('view update');
 
-  Ractive.load( 'table.html' ).then( function ( Table ) {
-    var table = new Table({
-      el: '#body',
-      data: {
-        dbs: getDatabases()
-      },
-      modifyArrays: false
-    });
+	Ractive.load( 'table.html' ).then( function ( Table ) {
+		var table = new Table({
+			el: '#body',
+			data: {
+				dbs: ENV.generateData().toArray()
+			},
+			modifyArrays: false
+		});
 
-    function redraw() {
-      table.set( 'dbs', getDatabases() );
-      Monitoring.renderRate.ping();
-      setTimeout(redraw, TIMEOUT);
-    }
-    redraw();
-  })
-  .catch( function ( err ) {
-    console.error( err );
-  });
+		function redraw() {
+			perfMonitor.startProfile('view update');
+			table.set( 'dbs', ENV.generateData().toArray() );
+			perfMonitor.endProfile('view update');
+			setTimeout(redraw, ENV.timeout);
+		}
+		redraw();
+  	})
+  	.catch( function ( err ) {
+		console.error( err );
+  	});
 </script>
 
 </body>
