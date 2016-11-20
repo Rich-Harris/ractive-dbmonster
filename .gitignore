@@ -1,5 +1,2 @@
-node_modules/*
-!node_modules/ractive
-!node_modules/ractive-load
-!node_modules/underscore
-!node_modules/memory-stats
+.DS_Store
+node_modules

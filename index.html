@@ -8,43 +8,16 @@
 <div id="link">
   You're looking at a Ractive<br>
   version of <a href="https://dbmonster.firebaseapp.com/">DBMonster</a>.<br>
-  <a class="center" href="https://github.com/rich-harris/ractive-dbmonster">See it on GitHub</a>
+  <a class="center" href="https://github.com/Rich-Harris/ractive-dbmonster">See it on GitHub</a>
 </div>
 
 <div id="body">
 </div>
 
 <script src="ENV.js"></script>
-<script src='http://cdn.ractivejs.org/latest/ractive.js'></script>
-<script src="http://cdn.jsdelivr.net/ractive.load/latest/ractive-load.min.js"></script>
-<script src="http://localvoid.github.io/perf-monitor/0.1/perf-monitor.js"></script>
-
-<script type="text/javascript">
-	perfMonitor.startFPSMonitor();
-	perfMonitor.startMemMonitor();
-	perfMonitor.initProfiler('view update');
-
-	Ractive.load( 'table.html' ).then( function ( Table ) {
-		var table = new Table({
-			el: '#body',
-			data: {
-				dbs: ENV.generateData().toArray()
-			},
-			modifyArrays: false
-		});
-
-		function redraw() {
-			perfMonitor.startProfile('view update');
-			table.set( 'dbs', ENV.generateData().toArray() );
-			perfMonitor.endProfile('view update');
-			setTimeout(redraw, ENV.timeout);
-		}
-		redraw();
-  	})
-  	.catch( function ( err ) {
-		console.error( err );
-  	});
-</script>
+<script src="perf-monitor.js"></script>
+<script src='ractive.runtime.min.js'></script>
+<script src='bundle.js'></script>
 
 </body>
 </html>

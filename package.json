@@ -1,16 +1,34 @@
 {
   "name": "ractive-dbmonster",
   "version": "1.0.0",
-  "dependencies": {
-    "memory-stats": "^1.0.2",
-    "ractive": "git://github.com/ractivejs/ractive.git#build",
-    "ractive-load": "^0.5.2",
-    "underscore": "^1.8.3"
-  },
-  "devDependencies": {
-    "http-server": "^0.8.5"
-  },
+  "description": "Ractive implementation of DBMonster",
+  "main": "index.js",
   "scripts": {
-    "start": "http-server"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "cp node_modules/ractive/ractive.runtime.min.js . && rollup -c",
+    "build:min": "cp node_modules/ractive/ractive.runtime.min.js . && rollup -c --environment production"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rich-Harris/ractive-dbmonster.git"
+  },
+  "keywords": [
+    "svelte",
+    "dbmonster"
+  ],
+  "author": "Rich Harris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sveltejs/svelte-dbmonster/issues"
+  },
+  "homepage": "https://github.com/sveltejs/svelte-dbmonster#readme",
+  "devDependencies": {
+    "rollup": "^0.36.3",
+    "rollup-plugin-buble": "^0.14.0",
+    "rollup-plugin-ractive": "^2.0.0",
+    "rollup-plugin-uglify": "^1.0.1"
+  },
+  "dependencies": {
+    "ractive": "^0.8.5"
   }
 }
